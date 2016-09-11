@@ -1,0 +1,21 @@
+trayecto = []
+
+def agregarTrayecto(desde,hasta):
+ trayecto.append(desde)
+ trayecto.append(hasta)
+ print("agregados exitosamente")
+ print (trayecto)
+
+def agregarCiudadAlFinal(nombre):
+        trayecto.append(nombre)
+        print("nueva estacion añadida al recorrido:", nombre )
+        print (trayecto)
+
+def agregarCiudadEntreCiudades(posicion,nombre):
+        trayecto.insert(posicion,nombre)
+        print ("estacion intermedia del recorrido:", nombre )
+        print (trayecto)
+
+agregarTrayecto("devoto", "palomar")
+agregarCiudadAlFinal("pilar")
+agregarCiudadEntreCiudades(1,"Santos Lugares")
