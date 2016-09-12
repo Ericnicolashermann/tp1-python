@@ -1,17 +1,31 @@
+
 from config import *
 import googlemaps
 import shelve
 gmaps=googlemaps.Client(key = "AIzaSyDEt-2dtjvfTd9Y88QvzydDeQk7swAHmJ4")
 
 trayectos = {}
+rutas = {}
+class ruta(object):
+    ruta = []
+    ultima_ciudad = None
+    ciudades = []
+    d = {}
+    def __init__ (self, desde, hasta):
+            self.ruta.append(gmaps.distance_matrix(desde, hasta))
+            self.ultima_ciudad = hasta
+            self.ciudades.append((desde, hasta))
+            self.d[(desde , hasta)] = gmaps.distance_matrix(desde, hasta)
+    def agregar_ciudad_al_final(self, ciudad):
+        self.ruta.append(gmaps.distance_matrix(ultima_ciudad, ciudad))
+        self.ciudades.append((ultima_ciudad, ciudad))
 
+    def agregar_ciudad_intermedia(self, posicion, ciudad):
 
-class Trayecto(object):
-    ruta
-   ciudades = []
-    def __init__ (self, ciudad = []):
-        ruta = gmaps.distance_matrix(desde,hasta)
-        self.ciudades = ciudad
+        origen = self.ciudades[posicion][0]
+        destino = self.ciudades[posicion][1]
+        self.ruta.insert(posicion, gmaps.distance_matrix(origen, ciudad))
+        ruta[posicion + 1] = gmaps.distance_matrix(ciudad,destino)
 
 
 
